@@ -1,20 +1,19 @@
 body {
   user-select: none;
-  z-index: 4;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
 }
 
 .cursorInfoAnimate {
   width: 100%;
   height: 500px;
-  background-color: #ccc;
   position: relative;
-}
-
-.cursorInfoAnimate .number {
-  z-index: 2;
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 3em;
-  transition: top 1s ease-in-out;
+  overflow: hidden;
+  border-radius: 8px;
 }

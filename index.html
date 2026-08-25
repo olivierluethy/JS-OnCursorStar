@@ -2,13 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
-    <title>OnCursorStar</title>
+    <title>OnCursorStar — Binary Particle Physics</title>
 </head>
 <body>
-    <div class="cursorInfoAnimate"></div>
+    <main>
+        <h1>Binary Particle Physics</h1>
+        <p>Move your cursor across the field below. The 0s and 1s scatter,
+           fall, bounce, and settle back into place.</p>
+        <div class="cursorInfoAnimate" id="field"></div>
+    </main>
+    <script src="script.js"></script>
+    <script>
+      BinaryParticles.init(document.getElementById('field'), {
+        background: '#ccc',
+        color: '#111',
+      });
+    </script>
 </body>
 </html>
