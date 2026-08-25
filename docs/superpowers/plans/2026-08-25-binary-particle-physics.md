@@ -341,13 +341,12 @@ git commit -m "feat: add physics step with spring, gravity, activity (#1)"
   falsy or `input.active` is false, it does nothing. For a particle within
   `config.pushRadius` of `(input.x, input.y)`: compute `falloff = 1 - dist/radius`
   (0 at edge, 1 at center; `dist===0` treated as a tiny epsilon with an arbitrary
-  outward direction). Radial impulse magnitude = `config.pushStrength * falloff`.
+  outward direction). Radial acceleration magnitude = `config.pushStrength * falloff`.
   Direction = normalized (particle − cursor). Blend in cursor velocity:
-  `impulse = radialDir * mag + {vx,vy} * config.velocityInfluence * falloff`.
-  Add `impulse * dt`? No — push is applied as a velocity delta scaled to feel like
-  an impulse: `p.vel.x += impulse.x * PUSH_DT; p.vel.y += impulse.y * PUSH_DT` with
-  `PUSH_DT = 1/60` (a fixed impulse tick, so push strength is frame-rate stable).
-  Set `p.activity = 1`.
+  `accel = radialDir * mag + {vx,vy} * config.velocityInfluence * falloff`.
+  Applied as a continuous repulsion force (frame-rate independent):
+  `applyPush(p, input, config, dt)` does `p.vel += accel * dt`, so `pushStrength`
+  is an acceleration (px/s²). Set `p.activity = 1`.
 
 - [ ] **Step 1: Write the failing test**
 
